@@ -1,0 +1,27 @@
+
+
+twitterscraper_bss_data.csv
+search string: "@BSSLosAngeles"
+length: 10k
+
+twitterscraper_vz_data.csv
+search string: "lavisionzero OR visionzerola"
+length: 10k (maxed out)
+
+twitterscraper_dot_data.csv
+search string: "ladot"
+length: 10k
+
+twitterscraper_pdr_data.csv
+search string: "@RestoreVeniceBl OR @keepPDRmoving"
+length: 10k (maxed out)
+
+twitterscraper_bonin_data.csv
+search string: "@mikebonin OR @mikeboninLA"
+length: 10k
+
+# still need to do this one!
+twitterscraper_metro_data.csv
+search string: "@metrolosangeles"
+length: 10k
+length: 10k
