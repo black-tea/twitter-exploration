@@ -8,7 +8,7 @@ library(tidyr)
 
 ### Data Prep
 # Load Data
-dot_df <- read.csv('C:/Users/Tim/Documents/GitHub/twitter-exploration/twitterscraper_data.csv')
+dot_df <- read.csv('C:/Users/Tim/Documents/GitHub/twitter-exploration/twitterscraper_dot_data.csv')
 
 # Clean
 dot_df$text <- sapply(dot_df$text,function(row) iconv(row, "latin1", "ASCII", sub=""))
@@ -40,7 +40,7 @@ monthlysentiment <- tweets %>%
   summarise(#nrc.neg.sum = sum(negative),
             #nrc.pos.sum = sum(positive),
             bing.neg.sum = sum(bing.neg),
-            bing.pos.sum = sum(bing.pos)) %>%
+            bing.pos.sum = sum(bing.pos),) %>%
             #afinn.pos.sum = sum(afinn.pos),
             #affin.neg.sum = sum(afinn.neg)) %>%
             #joy = sum(joy),
@@ -56,7 +56,6 @@ names(monthlysentiment) <- c("month", "sentiment", "count")
 # Plot Sentiment over Time
 ggplot(data = monthlysentiment, aes(x = as.Date(month), y = count, group = sentiment)) +
   geom_line(size = 1, alpha = 0.7, aes(color = sentiment)) +
-  #geom_point(size = 0.5) +
   ylim(0, NA) +
   theme(legend.title=element_blank(), axis.title.x = element_blank()) +
   scale_x_date(breaks = date_breaks("3 months"), 
@@ -76,11 +75,11 @@ ggplot(data = monthlysentiment, aes(x = as.Date(month), y = count, group = senti
   # Culver / Jefferson Westbound Travel Lane Reversal Announced
   geom_vline(aes(xintercept = as.numeric(as.Date("2017-10-2"))), 
              linetype=4, col = "black") +
-  annotate("text",x = as.Date("2017-10-26"),y=275, label= "Culver/Jefferson WBound Reversal\n", size=3, angle=90) +  
-  # Culver / Jefferson Westbound Travel Lane Reversal Announced
-  geom_vline(aes(xintercept = as.numeric(as.Date("2016-10-17"))), 
+  annotate("text",x = as.Date("2017-10-2"),y=275, label= "Culver/Jefferson WBound Reversal\n", size=3, angle=90) +  
+  # # Trump Star Vandalized
+  geom_vline(aes(xintercept = as.numeric(as.Date("2016-10-17"))),
              linetype=4, col = "black") +
-  annotate("text",x = as.Date("2016-10-17"),y=250, label= "Trump Star Vandalized\n", size=3, angle=90) + 
+  annotate("text",x = as.Date("2016-10-17"),y=250, label= "Trump Star Vandalized\n", size=3, angle=90) +
   ylab("Sentiment Count") + 
   ggtitle("Tweet Sentiments Involving 'LADOT'")
 
